@@ -2,9 +2,11 @@ package assessment.submission.services;
 
 import assessment.submission.models.Task;
 import assessment.submission.repositories.TaskRepository;
-import org.hibernate.mapping.List;
+//import org.hibernate.mapping.List;
+import jakarta.persistence.Id;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.List;
 
 @Service
 public class TaskService {
@@ -28,11 +30,11 @@ public class TaskService {
     }
 
     public List<Task> findAllInCompleteTask() {
-        return List<Task> taskRepository.findByCompletedFalse();
+        return taskRepository.findByCompletedFalse();
     }
 
-    public void deleteTask(Long task) {
-        taskRepository.delete(task);
+    public void deleteTask(Long id) {
+        taskRepository.deleteById(id);
     }
 
     public Task updateTask(Task task) {
